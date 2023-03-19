@@ -33,7 +33,8 @@ const CharactersScreen = () => {
       method: 'POST',
 
       headers: {
-        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'content-type': 'application/json',
       },
 
       body: JSON.stringify({
@@ -63,9 +64,9 @@ const CharactersScreen = () => {
 
   return (
     <View>
-      <Text>Character asd</Text>
       {characters && (
         <FlatList
+          style={styles.container}
           data={characters?.results}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
@@ -84,3 +85,9 @@ const CharactersScreen = () => {
 };
 
 export default CharactersScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+  },
+});

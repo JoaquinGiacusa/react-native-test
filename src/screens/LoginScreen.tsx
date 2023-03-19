@@ -28,26 +28,29 @@ const LoginScreen = ({navigation}: Props) => {
   const handleOnSubmit = async () => {
     if (email == '' || password == '') return;
 
+    // const body = {
+    //   email,
+    //   password,
+    // };
+
     const body = {
-      email,
-      password,
+      email: 'giacusajoaquin@gmail.com',
+      password: 'asdASD,1',
     };
-    // console.log(body);
-    var data = new FormData();
-    data.append('email', email);
-    data.append('password', password);
+
     // const res = await
-    fetch('http://localhost:3000/api/auth/login', {
-      method: 'POST',
-      body: data,
-      headers: {
-        Accept: 'application/json',
-        'Content-type': 'application/json',
+    fetch(
+      'https://crombiegram.terapia-constalcion-familiar.com/api/auth/login',
+      {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          Accept: 'application/json',
+          'content-Type': 'application/json',
+        },
       },
-    })
-      .then(res => {
-        res.json();
-      })
+    )
+      .then(res => res.json())
       .then(data => console.log(data))
       .catch(error => {
         console.error(error);
